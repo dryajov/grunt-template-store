@@ -1,0 +1,5 @@
+define(function(){
+var templateStore = {};
+
+return templateStore;
+});
