@@ -69,7 +69,7 @@ module.exports = function (grunt) {
 
                 // Read file source.
                 return 'templateStore[\'' + filepath + '\']='
-                    + that.process_template(content) + ');';
+                    + that.process_template(content) + ';';
             }).join('\n');
 
             src = templateStoreHeader + src + templateStoreFooter;
