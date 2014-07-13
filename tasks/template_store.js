@@ -29,7 +29,7 @@ module.exports = function (grunt) {
         this.process_template = function (source) {
             if (options.htmlmin && Object.keys(options.htmlmin).length) {
                 try {
-                    source = minify(source, options.htmlmin);
+                    source = '\'' + minify(source, options.htmlmin) + '\'';
                 } catch (err) {
                     grunt.warn(err);
                 }
@@ -68,7 +68,8 @@ module.exports = function (grunt) {
                 var content = grunt.file.read(filepath);
 
                 // Read file source.
-                return 'templateStore.push(\'' + filepath + '\', ' + that.process_template(content) + ');';
+                return 'templateStore.push(\'' + filepath + '\', '
+                    + that.process_template(content) + ');';
             }).join('\n');
 
             src = templateStoreHeader + src + templateStoreFooter;
