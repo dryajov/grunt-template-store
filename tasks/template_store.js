@@ -68,8 +68,8 @@ module.exports = function (grunt) {
                 var content = grunt.file.read(filepath);
 
                 // Read file source.
-                return 'templateStore[\'' + filepath + '\']='
-                    + that.process_template(content) + ';';
+                return 'templateStore[\'' + filepath + '\']=' +
+                    that.process_template(content) + ';';
             }).join('\n');
 
             src = templateStoreHeader + src + templateStoreFooter;

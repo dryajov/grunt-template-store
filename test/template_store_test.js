@@ -31,7 +31,9 @@ exports.template_store = {
         test.expect(1);
 
         var actual = grunt.file.read('tmp/templateStore_default.js');
+        console.log("\nactual:\n" + actual);
         var expected = grunt.file.read('test/expected/templateStore_default.js');
+        console.log("\nexpected:\n" + expected);
         test.equal(actual, expected, 'Default behavior should concatenate files into a requirejs wrapped template store');
 
         test.done();
@@ -40,7 +42,9 @@ exports.template_store = {
         test.expect(1);
 
         var actual = grunt.file.read('tmp/templateStore_htmlmin.js');
+        console.log("\nactual:\n" + actual);
         var expected = grunt.file.read('test/expected/templateStore_htmlmin.js');
+        console.log("\nexpected:\n" + expected);
         test.equal(actual, expected, 'Html min behavior should concatenate and minify files into a requirejs wrapped template store');
 
         test.done();
