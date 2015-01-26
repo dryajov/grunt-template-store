@@ -15,7 +15,7 @@ module.exports = function (grunt) {
     var templateStoreHeader = 'define(function(){\nvar templateStore = {};\n',
         templateStoreFooter = '\nreturn templateStore;\n});';
 
-    grunt.registerMultiTask('template_store', 'Generate template stores', function () {
+    grunt.registerMultiTask('template-store', 'Generate template stores', function () {
         var options = this.options({
                 htmlmin: {}
             }),
@@ -26,7 +26,7 @@ module.exports = function (grunt) {
          * @param  {String} source  Template source
          * @return {String}         Minified template
          */
-        this.process_template = function (source) {
+        this.process = function (source) {
             if (options.htmlmin && Object.keys(options.htmlmin).length) {
                 try {
                     source = '\'' + minify(source, options.htmlmin) + '\'';
@@ -68,8 +68,7 @@ module.exports = function (grunt) {
                 var content = grunt.file.read(filepath);
 
                 // Read file source.
-                return 'templateStore[\'' + filepath + '\']=' +
-                    that.process_template(content) + ';';
+                return 'templateStore[\'' + filepath + '\']=' + that.process(content) + ';';
             }).join('\n');
 
             src = templateStoreHeader + src + templateStoreFooter;
